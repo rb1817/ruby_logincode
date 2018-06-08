@@ -31,7 +31,7 @@ end
 
 #### 로그인 하기(<form> 태그 이용)
 
-```add.rb
+```ruby
 get '/form' do
 	erb :form
 end
@@ -77,7 +77,7 @@ endb :complete
 end
 ```
 
-``` login.erb
+``` erb
 <form action = "/login" method = "POST">
  아이디 : <input type="text" name = "id">
  비밀번호 : <input type="password" name = "password">
@@ -92,7 +92,7 @@ end
 
 #### 검색창 만들기
 
-```add.rb
+```ruby
 get '/search' do
     erb :search
 end
@@ -109,7 +109,7 @@ post '/search' do
 end
 ```
 
-```search.erb
+```erb
 <p>----form action을 이용한 방법----</p>
 <form action="https://search.naver.com/search.naver">
     <input type="text" name="query" placeholder="네이버 검색창">
@@ -139,7 +139,7 @@ end
 
 #### fake op.gg 사이트 만들기
 
-```add.rb
+```ruby
 get '/op_gg' do
 
     if params[:userName]
@@ -152,8 +152,8 @@ get '/op_gg' do
         result = Nokogiri::HTML.parse(url)
         # nokogiri를 이용하여 원하는 부분을 골라냄
         #css는 태그라던가 클래스라던가를 찾아나감. copy_selector로 찾을 수 있음
-        #win = result.css('#GameAverageStatsBox-matches > div.Box > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > span.win').first
-        #lose = result.css('#GameAverageStatsBox-matches > div.Box > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > span.lose').first        
+        #win = result.css('#GameAverageStatsBox-matches > div.Box > table > tbody > tr:nth-		  child(1) > td:nth-child(1) > div > span.win').first
+        #lose = result.css('#GameAverageStatsBox-matches > div.Box > table > tbody > 		   tr:nth-child(1) > td:nth-child(1) > div > span.lose').first        
         win = result.css('span.win').first
         lose = result.css('span.lose').first
         # 검색 결과를 페이지에서 보여주기 위한 변수 선언
@@ -171,7 +171,7 @@ get '/op_gg' do
 end
 ```
 
-``` op_gg.erb
+``` erb
 <form>
     <select name="search_method">
         <option value="self"> 승패만 보기 </option>
